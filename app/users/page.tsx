@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import RootLayout from "../layout";
+import { Button, styled } from "@mui/material";
 
 export const metadata: Metadata = {
   title: "Users page",
@@ -7,5 +7,14 @@ export const metadata: Metadata = {
 };
 
 export default function UsersPage() {
-  return <h2>This is the User Index page</h2>;
+  return (
+    <div>
+      {/* @ts-ignore */}
+      <Button sx={{ mx: 1 }} variant="contained">
+        Hellow Mui
+      </Button>
+      {/* <StyledDiv>123</StyledDiv> */}
+      <h2>This is the User Index page</h2>;
+    </div>
+  );
 }

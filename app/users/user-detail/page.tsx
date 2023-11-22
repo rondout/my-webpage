@@ -1,3 +1,4 @@
+import { Slider } from "@mui/material";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -6,5 +7,10 @@ export const metadata: Metadata = {
 };
 
 export default function UserDetailPage() {
-  return <h4>This is USER DETAIL page</h4>;
+  return (
+    <div>
+      <Slider value={15}></Slider>
+      <h4>This is USER DETAIL page</h4>;
+    </div>
+  );
 }
