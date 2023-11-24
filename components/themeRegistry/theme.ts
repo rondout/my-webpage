@@ -7,12 +7,17 @@ const roboto = Roboto({
   display: "swap",
 });
 
-export const generateTheme = (primary: string = "#3f51b5") => {
+export const generateTheme = (primary?: string) => {
+  try {
+    if (!primary) {
+      // primary = localStorage.getItem("theme") || "#3f51b5";
+    }
+  } catch (error) {}
   return createTheme({
     palette: {
       mode: "light",
       primary: {
-        main: primary,
+        main: primary || "#3f51b5",
       },
     },
     typography: {
