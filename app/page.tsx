@@ -1,5 +1,6 @@
+import { Box } from "@mui/material";
 import { Metadata } from "next";
-import RootLayout from "./layout";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Index page",
@@ -7,5 +8,10 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return <h1>this is page.tsx</h1>;
+  return (
+    <Box>
+      <h1>this is page.tsx</h1>
+      <Link href="/users">Users</Link>
+    </Box>
+  );
 }

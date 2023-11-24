@@ -16,10 +16,14 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import { usePathname } from "next/navigation";
+import { NO_BASE_LAYOUT_PATHS } from "@/models/config.model";
 
 export default function HeaderBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+
+  const pathName = usePathname();
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -114,6 +118,10 @@ export default function HeaderBar() {
       </MenuItem>
     </Menu>
   );
+
+  if (NO_BASE_LAYOUT_PATHS.includes(pathName)) {
+    return null;
+  }
 
   return (
     <Box sx={{ flexGrow: 1 }}>

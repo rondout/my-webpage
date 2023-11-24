@@ -1,13 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// import './globals.css'
-import { ThemeProvider, createTheme } from "@mui/material";
 import ThemeRegistry from "@/components/themeRegistry/ThemeRegistry";
 import HeaderBar from "@/components/layout/HeaderBar";
 
 const inter = Inter({ subsets: ["latin"] });
-
-// const theme = createTheme({ palette: { primary: { main: "F6f51b5" } } });
 
 export const metadata: Metadata = {
   title: "Create Next App11",
@@ -22,7 +18,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        {/* @ts-ignore */}
         <ThemeRegistry>
           <HeaderBar />
           {children}
