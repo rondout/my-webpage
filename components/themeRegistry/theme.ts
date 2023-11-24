@@ -7,27 +7,29 @@ const roboto = Roboto({
   display: "swap",
 });
 
-const theme = createTheme({
-  palette: {
-    mode: "light",
-    primary: {
-      main: "#3f51b5",
-    },
-  },
-  typography: {
-    fontFamily: roboto.style.fontFamily,
-  },
-  components: {
-    MuiAlert: {
-      styleOverrides: {
-        root: ({ ownerState }) => ({
-          ...(ownerState.severity === "info" && {
-            backgroundColor: "#60a5fa",
-          }),
-        }),
+export const generateTheme = (primary: string = "#3f51b5") => {
+  return createTheme({
+    palette: {
+      mode: "light",
+      primary: {
+        main: primary,
       },
     },
-  },
-});
+    typography: {
+      fontFamily: roboto.style.fontFamily,
+    },
+    components: {
+      MuiAlert: {
+        styleOverrides: {
+          root: ({ ownerState }) => ({
+            ...(ownerState.severity === "info" && {
+              backgroundColor: "#60a5fa",
+            }),
+          }),
+        },
+      },
+    },
+  });
+};
 
-export default theme;
+export const defaultTheme = generateTheme();
