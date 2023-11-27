@@ -1,5 +1,7 @@
 import { Metadata } from "next";
-import RootLayout from "../layout";
+import { Button } from "@mui/material";
+import NavigateButton from "@/app/components/tools/NavigateButton";
+import CounterControl from "../components/counter/CounterControl";
 
 export const metadata: Metadata = {
   title: "Users page",
@@ -7,5 +9,16 @@ export const metadata: Metadata = {
 };
 
 export default function UsersPage() {
-  return <h2>This is the User Index page</h2>;
+  return (
+    <div>
+      <CounterControl />
+      <Button sx={{ mx: 1 }} variant="contained">
+        Hellow Mui
+      </Button>
+      <NavigateButton destination="/" variant="contained" sx={{ mx: 2 }}>
+        back
+      </NavigateButton>
+      <h2>This is the User Index page</h2>
+    </div>
+  );
 }
