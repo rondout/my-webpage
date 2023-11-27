@@ -4,7 +4,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./modules/counterSlice";
 import { Provider } from "react-redux";
-import { useEffect } from "react";
 
 const rootReducer = combineReducers({
   counter: counterReducer,
@@ -16,9 +15,6 @@ export const store = configureStore({
 });
 
 export function ReduxProvider({ children }) {
-  useEffect(() => {
-    console.log("mounted");
-  }, []);
   return <Provider store={store}>{children}</Provider>;
 }
 

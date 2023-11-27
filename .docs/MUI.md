@@ -1,5 +1,9 @@
 # Mui + Next.js 问题记录
 
+## 说明
+
+`Next.js` 版本升级到 14 后，相比 13 版本是一个改动很大的大版本升级，很多概念或者使用方式 13 版本都有较大的区别，因此这里记录一些学习 14 版本的 `Next.js` 的心得体会或者问题。因为我这边构建项目选择的是 `Next.js` 新的路由模式 `App Router`，因此该文档是基于 `App Router` 路由模式的。
+
 ## 引入 themeProvider 报错
 
 解决方案：查看官方提供的[nextjs 示例](https://github.com/mui/material-ui/blob/master/examples/material-ui-nextjs-ts/src/components/ThemeRegistry/ThemeRegistry.tsx)
