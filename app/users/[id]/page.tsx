@@ -1,6 +1,6 @@
 // "use client";
-import { StyledDiv } from "@/components/layout/StyledDiv";
-import LoginButton from "@/components/users/LoginButton";
+import { StyledDiv } from "@/app/components/layout/StyledDiv";
+import LoginButton from "@/app/components/users/LoginButton";
 import { Slider, Typography } from "@mui/material";
 import { Metadata } from "next";
 

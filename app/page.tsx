@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 import { Metadata } from "next";
 import Link from "next/link";
+import CounterControl from "./components/counter/CounterControl";
 
 export const metadata: Metadata = {
   title: "Index page",
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <Box>
       <h1>this is page.tsx</h1>
+      <CounterControl />
       <Link href="/users">Users</Link>
     </Box>
   );

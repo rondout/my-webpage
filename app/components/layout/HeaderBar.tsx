@@ -17,7 +17,7 @@ import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { usePathname } from "next/navigation";
-import { NO_BASE_LAYOUT_PATHS } from "@/models/config.model";
+import { NO_BASE_LAYOUT_PATHS } from "@/app/models/config.model";
 
 export default function HeaderBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
