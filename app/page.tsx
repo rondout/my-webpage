@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import { Metadata } from "next";
 import Link from "next/link";
-import CounterControl from "./components/counter/CounterControl";
+import CounterControl from "@/src/components/counter/CounterControl";
 
 export const metadata: Metadata = {
   title: "Index page",

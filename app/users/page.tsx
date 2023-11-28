@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { Button } from "@mui/material";
-import NavigateButton from "@/app/components/tools/NavigateButton";
-import CounterControl from "../components/counter/CounterControl";
+import NavigateButton from "@/src/components/tools/NavigateButton";
+import CounterControl from "@/src/components/counter/CounterControl";
 
 export const metadata: Metadata = {
   title: "Users page",

@@ -1,0 +1,126 @@
+/* @font-face {
+    font-family: HarmonyOS_Sans_SC_Regular;
+    src: url(./HarmonyOS_Sans_SC_Regular.ttf);
+  } */
+
+html,
+body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  /* font-family: HarmonyOS_Sans_SC_Regular; */
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.content-item {
+  width: 77.5%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 640px) {
+  .content-item {
+    width: 90%;
+  }
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.flex-start {
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-evenly {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-btw {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+.border-box {
+  box-sizing: border-box;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.relative-position {
+  position: relative;
+}
+
+.abs-position {
+  position: absolute;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  box-orient: vertical;
+  -webkit-box-orient: vertical;
+  line-clamp: 1;
+  /* -webkit-line-clamp: 1; */
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}
+
+.unused-input-password {
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border: none;
+  opacity: 0;
+}
