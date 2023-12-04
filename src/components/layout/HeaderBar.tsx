@@ -13,17 +13,19 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import MoreIcon from "@mui/icons-material/MoreVert";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { NO_BASE_LAYOUT_PATHS } from "@/src/models/config.model";
-import ThemeChanger from "../themeRegistry/ThemeChanger";
+// import ThemeChanger from "../themeRegistry/ThemeChanger";
 import { useSelector } from "react-redux";
 import { selectUserInfo } from "@/src/store/modules/mainSlice";
 import GetUserInfo from "../users/GetUserInfo";
+import { StyledMenu } from "../common/styled/StyledMenu";
 
 export default function HeaderBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const userInfo = useSelector(selectUserInfo);
+  const router = useRouter();
 
   const pathName = usePathname();
 
@@ -47,9 +49,15 @@ export default function HeaderBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const handleMenuClick = (path: string) => {
+    // console.log(e);
+    router.push(path);
+    handleMenuClose();
+  };
+
   const menuId = "primary-search-account-menu";
   const renderMenu = (
-    <Menu
+    <StyledMenu
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: "top",
@@ -64,9 +72,9 @@ export default function HeaderBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
-    </Menu>
+      <MenuItem onClick={() => handleMenuClick("/profile")}>我的</MenuItem>
+      <MenuItem onClick={() => handleMenuClick("/login")}>退出登录</MenuItem>
+    </StyledMenu>
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -147,7 +155,6 @@ export default function HeaderBar() {
           >
             MUI
           </Typography>
-          <ThemeChanger></ThemeChanger>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
@@ -168,18 +175,21 @@ export default function HeaderBar() {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-              <Typography variant="body2">{userInfo.username}</Typography>
-            </IconButton>
+            <Box className="flex pointer" onClick={handleProfileMenuOpen}>
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuId}
+                aria-haspopup="true"
+                color="inherit"
+              >
+                <AccountCircle />
+              </IconButton>
+              <Typography variant="body2" sx={{ ml: 0.5 }}>
+                {userInfo.username}
+              </Typography>
+            </Box>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton

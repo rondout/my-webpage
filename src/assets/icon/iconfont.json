@@ -1,0 +1,30 @@
+{
+  "id": "4354023",
+  "name": "my-webpage",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "my-webpage",
+  "glyphs": [
+    {
+      "icon_id": "4767093",
+      "name": "check",
+      "font_class": "check",
+      "unicode": "e7fc",
+      "unicode_decimal": 59388
+    },
+    {
+      "icon_id": "90846",
+      "name": "female",
+      "font_class": "female",
+      "unicode": "e71a",
+      "unicode_decimal": 59162
+    },
+    {
+      "icon_id": "90848",
+      "name": "male",
+      "font_class": "male",
+      "unicode": "e71c",
+      "unicode_decimal": 59164
+    }
+  ]
+}

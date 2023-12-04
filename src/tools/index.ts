@@ -1,3 +1,5 @@
+import { MatSelectOptionFactory } from "../components/common/material/MatSelect";
+
 export const getLocalStorageItem = (key: string): string => {
   try {
     if (typeof localStorage !== undefined) {
@@ -22,6 +24,20 @@ export function isNull(param: any): boolean {
 }
 
 export function handleResponseError(error: any) {
-  const msg = error?.data?.errMsg;
+  const msg = error?.data?.errMsg || error?.data;
   msg && console.log({ msg });
+}
+
+/**
+ *
+ * @description 把map数据转换为select的options
+ */
+export function labelMapToSelectOptions<
+  T extends Map<any, any> = Map<any, any>
+>(mapData: T) {
+  const options: MatSelectOptionFactory[] = [];
+  mapData.forEach((label, key) =>
+    options.push(new MatSelectOptionFactory(key, label))
+  );
+  return options;
 }

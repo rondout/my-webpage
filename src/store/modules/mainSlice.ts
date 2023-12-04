@@ -15,7 +15,9 @@ export const mainSlice = createSlice({
     changeThemeColor(state, action: ReduxAction<string>) {
       state.themeColor = action.payload;
       // setLocalStorageItem(STORAGE_THEME_COLOR_KEY, action.payload);
-      setCookie(STORAGE_THEME_COLOR_KEY, action.payload);
+      setCookie(STORAGE_THEME_COLOR_KEY, action.payload, {
+        expires: new Date("9999-12-30"),
+      });
     },
     setUserInfo(state, action: ReduxAction<BaseUserInfo>) {
       state.userInfo = action.payload;

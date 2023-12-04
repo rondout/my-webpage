@@ -1,10 +1,15 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, SxProps, Typography } from "@mui/material";
-import { nanoid } from "nanoid";
+import {
+  Box,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SxProps,
+  Typography,
+} from "@mui/material";
 import { memo, ReactNode } from "react";
-import { useTranslation } from "react-i18next";
 import { MatFormItemProps } from "../../../models/base.model";
-import { isNull } from "../../../utils";
-import { selectGreyColor } from "../../../utils/selectors";
+import { isNull } from "@/src/tools";
 
 const MenuProps = {
   PaperProps: {
@@ -15,16 +20,22 @@ const MenuProps = {
   },
 };
 
-export interface MatSelectOption<T = string | number | readonly string[] | any> {
+export interface MatSelectOption<
+  T = string | number | readonly string[] | any
+> {
   value: T;
   label: string;
 }
 
-export class MatSelectOptionFactory<T = string | number | readonly string[] | any> implements MatSelectOption<T> {
+export class MatSelectOptionFactory<
+  T = string | number | readonly string[] | any
+> implements MatSelectOption<T>
+{
   constructor(public value: MatSelectOption["value"], public label: string) {}
 }
 
-export interface MatSelectProps<T = string | number | readonly string[] | any> extends MatFormItemProps<MatSelectOption["value"]> {
+export interface MatSelectProps<T = string | number | readonly string[] | any>
+  extends MatFormItemProps<MatSelectOption["value"]> {
   options: MatSelectOption<T>[];
   size?: "small" | "medium";
   customRender?(data?: T): ReactNode;
@@ -32,11 +43,9 @@ export interface MatSelectProps<T = string | number | readonly string[] | any> e
   loading?: boolean;
 }
 
-const initNoneValue = "@@INIT" + nanoid();
+const initNoneValue = "@@INIT44949449*4949*";
 
 export default memo(function MatSelect(props: MatSelectProps) {
-  const { t } = useTranslation();
-
   // 初始化默认值  根据是否传入placeholder来判断
   const defaultValue = props.placeholder ? initNoneValue : "";
 
@@ -44,8 +53,12 @@ export default memo(function MatSelect(props: MatSelectProps) {
   const optionHeight = props.size === "medium" ? 48 : 40;
 
   return (
-    <FormControl size={props.size || "small"} fullWidth sx={{ maxWidth: props.width || 1 / 1, ...(props.sx || {}) }}>
-      <InputLabel>{t(props.label)}</InputLabel>
+    <FormControl
+      size={props.size || "small"}
+      fullWidth
+      sx={{ maxWidth: props.width || 1 / 1, ...(props.sx || {}) }}
+    >
+      <InputLabel>{props.label}</InputLabel>
       <Select
         onChange={props.onChange}
         disabled={props.disabled}
@@ -56,19 +69,27 @@ export default memo(function MatSelect(props: MatSelectProps) {
         MenuProps={MenuProps}
         labelId="demo-simple-select-label"
         value={value}
-        label={props.label ? t(props.label) : undefined}
+        label={props.label ? props.label : undefined}
       >
-        {props.loading && <Typography sx={{ px: 2, py: 1 }}>loading...</Typography>}
+        {props.loading && (
+          <Typography sx={{ px: 2, py: 1 }}>loading...</Typography>
+        )}
         {props.placeholder && (
           <MenuItem sx={{ display: "none" }} disabled value={initNoneValue}>
-            <Typography color={selectGreyColor}>{t(props.placeholder)}</Typography>
+            <Typography>{props.placeholder}</Typography>
           </MenuItem>
         )}
-        {!(props.options?.length > 0) && props.loading !== true && <Box sx={{ px: 2, py: 1 }}>{t("common.noDataFound")}</Box>}
+        {!(props.options?.length > 0) && props.loading !== true && (
+          <Box sx={{ px: 2, py: 1 }}>暂无数据</Box>
+        )}
         {props.options?.map((option, index) => (
-          <MenuItem key={index} sx={{ height: optionHeight }} value={option.value}>
+          <MenuItem
+            key={index}
+            sx={{ height: optionHeight }}
+            value={option.value}
+          >
             {props.customRender && props.customRender(option.value)}
-            {!props.customRender && t(option.label)}
+            {!props.customRender && option.label}
           </MenuItem>
         ))}
       </Select>

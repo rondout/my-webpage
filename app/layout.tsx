@@ -6,6 +6,8 @@ import { ReduxProvider } from "@/src/store/store";
 import "@/src/style/main.css";
 import { cookies } from "next/headers";
 import { STORAGE_THEME_COLOR_KEY } from "@/src/models/config.model";
+import { Box } from "@mui/material";
+import "@/src/assets/icon/iconfont.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,15 +18,17 @@ export const metadata: Metadata = {
 
 function RootLayout({ children }: { children: React.ReactNode }) {
   const cookieStore = cookies();
-  const color = cookieStore.get(STORAGE_THEME_COLOR_KEY).value;
+  const color = cookieStore.get(STORAGE_THEME_COLOR_KEY)?.value;
 
   return (
     <html lang="en">
       <body className={inter.className}>
         <ReduxProvider>
           <ThemeRegistry color={color}>
-            <HeaderBar />
-            {children}
+            <Box sx={{ bgcolor: "#f2f3f5", height: 1 }}>
+              <HeaderBar />
+              {children}
+            </Box>
           </ThemeRegistry>
         </ReduxProvider>
       </body>

@@ -18,3 +18,12 @@ export interface BaseResponse<T = any> {
   success: boolean;
   code: RespCode;
 }
+
+export const THEME_COLORS = [
+  "#3F51B5",
+  "#0082c3",
+  "#3eaf7c",
+  "#1869ff",
+  "#eb2f96",
+  "#000000",
+];

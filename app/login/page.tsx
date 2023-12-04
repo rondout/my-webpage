@@ -37,7 +37,8 @@ export default function Login() {
         setLoginLoading(false);
         setCookie(STORAGE_TOKEN_KEY, data.token);
         setLocalStorageItem(STORAGE_TOKEN_KEY, data.token);
-        router.push("/");
+        // router.push("/");
+        window.location.href = window.location.origin;
         console.log(data);
       } catch (error) {
         setLoginLoading(false);
