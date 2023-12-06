@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  STORAGE_THEME_COLOR_KEY,
-  THEME_COLORS,
-} from "@/src/models/config.model";
+import { THEME_COLORS } from "@/src/models/config.model";
 import { changeThemeColor } from "@/src/store/modules/mainSlice";
 import { AppDispatch } from "@/src/store/store";
 import { Box, Button } from "@mui/material";

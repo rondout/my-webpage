@@ -35,11 +35,12 @@ export default function Login() {
         setLoginLoading(true);
         const data = await mainController.login(forms);
         setLoginLoading(false);
-        setCookie(STORAGE_TOKEN_KEY, data.token);
+        setCookie(STORAGE_TOKEN_KEY, data.token, {
+          expires: new Date("9999-12-30"),
+        });
         setLocalStorageItem(STORAGE_TOKEN_KEY, data.token);
         // router.push("/");
         window.location.href = window.location.origin;
-        console.log(data);
       } catch (error) {
         setLoginLoading(false);
         handleResponseError(error);

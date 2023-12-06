@@ -3,7 +3,6 @@ import {
   UserProfileColumns,
   userProfileColumnTabs,
 } from "@/src/models/user.model";
-import { TabPanel } from "@mui/lab";
 import { Box, Divider, Tab, Tabs } from "@mui/material";
 import { useCallback, useState } from "react";
 import UserActions from "./UserActions";

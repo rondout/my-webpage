@@ -41,8 +41,6 @@ export default async function Profile(props: any) {
   const userInfo = await getData(token);
   const color = cookieStore.get(STORAGE_THEME_COLOR_KEY)?.value;
 
-  console.log({ color });
-
   const genderInfo = userGenderLabelMap.get(userInfo?.gender);
 
   const avatarLabel = (() => {
