@@ -1,5 +1,6 @@
 "use client";
 import {
+  BaseUserInfo,
   UserProfileColumns,
   userProfileColumnTabs,
 } from "@/src/models/user.model";
@@ -8,10 +9,15 @@ import { useCallback, useState } from "react";
 import UserActions from "./UserActions";
 import UserArticles from "./UserArticles";
 
-export default function UserActionTabs() {
-  const [currentTab, setCurrentTab] = useState(UserProfileColumns.ACTIONS);
+interface UserActionTabsProps {
+  userInfo: BaseUserInfo;
+}
 
-  const handleTabChange = useCallback((_, value: UserProfileColumns) => {
+export default function UserActionTabs(props: UserActionTabsProps) {
+  const [currentTab, setCurrentTab] = useState(UserProfileColumns.ACTIONS);
+  console.log(222);
+
+  const handleTabChange = useCallback((_: any, value: UserProfileColumns) => {
     setCurrentTab(value);
   }, []);
 
@@ -23,8 +29,12 @@ export default function UserActionTabs() {
         ))}
       </Tabs>
       <Divider></Divider>
-      {currentTab === UserProfileColumns.ACTIONS && <UserActions />}
-      {currentTab === UserProfileColumns.ARTICLES && <UserArticles />}
+      {currentTab === UserProfileColumns.ACTIONS && (
+        <UserActions userInfo={props.userInfo} />
+      )}
+      {currentTab === UserProfileColumns.ARTICLES && (
+        <UserArticles userInfo={props.userInfo} />
+      )}
     </Box>
   );
 }

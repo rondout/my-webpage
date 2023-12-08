@@ -55,6 +55,8 @@ export class HttpController {
       );
       return await this.handleResponse(fetchResult);
     } catch (error) {
+      console.log(error);
+
       throw error;
     }
   }

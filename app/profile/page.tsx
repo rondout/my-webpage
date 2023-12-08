@@ -29,6 +29,7 @@ export const metaData: Metadata = {
 async function getData(token: string) {
   try {
     const userInfo = await mainController.getUserInfo(token);
+    // const actions = await mainController.getUserActions(null, token);
     return userInfo;
   } catch (error) {
     handleResponseError(error);
@@ -70,22 +71,24 @@ export default async function Profile(props: any) {
                     {userInfo.username}
                   </Typography>
                   <Typography>{userInfo.age}</Typography>
-                  <Tooltip placement="top" title={genderInfo.label}>
-                    <span>
-                      <Iconfont
-                        primary
-                        // color={genderInfo.color}
-                        icon={genderInfo.icon}
-                      ></Iconfont>
-                    </span>
-                  </Tooltip>
+                  {genderInfo && (
+                    <Tooltip placement="top" title={genderInfo.label}>
+                      <span>
+                        <Iconfont
+                          primary
+                          // color={genderInfo.color}
+                          icon={genderInfo.icon}
+                        ></Iconfont>
+                      </span>
+                    </Tooltip>
+                  )}
                   <Typography>{userInfo.authority}</Typography>
                   <ThemeChanger defaultColor={color} />
                 </Box>
               </Box>
             </Card>
             <Card sx={{ mt: 2 }}>
-              <UserActionTabs></UserActionTabs>
+              <UserActionTabs userInfo={userInfo}></UserActionTabs>
             </Card>
           </Grid>
           <Grid item xs={12} md={4}>

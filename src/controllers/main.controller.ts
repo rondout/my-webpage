@@ -1,5 +1,7 @@
 import { LoginForm } from "../models/base.model";
+import { PageLinkInterface, TableDataResponse } from "../models/response.model";
 import { BaseUserInfo } from "../models/user.model";
+import { UserActionInfo } from "../models/userAction.model";
 import { HttpController } from "./http.controller";
 
 class MainController extends HttpController {
@@ -8,6 +10,13 @@ class MainController extends HttpController {
   }
   public getUserInfo(token?: string) {
     return super.get<BaseUserInfo>("/api/auth/current", null, { token });
+  }
+  public getUserActions(pageLink: PageLinkInterface, token?: string) {
+    return super.get<TableDataResponse<UserActionInfo>>(
+      "/api/user-actions/page",
+      pageLink,
+      { token }
+    );
   }
 }
 
