@@ -6,6 +6,13 @@
   "description": "my-webpage",
   "glyphs": [
     {
+      "icon_id": "14629166",
+      "name": "empty-status",
+      "font_class": "empty",
+      "unicode": "e60e",
+      "unicode_decimal": 58894
+    },
+    {
       "icon_id": "4767093",
       "name": "check",
       "font_class": "check",

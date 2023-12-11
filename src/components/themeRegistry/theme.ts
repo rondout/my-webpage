@@ -1,11 +1,29 @@
 import { Roboto } from "next/font/google";
-import { createTheme } from "@mui/material/styles";
+import {
+  PaletteOptions,
+  TypeBackground,
+  createTheme,
+} from "@mui/material/styles";
 
 const roboto = Roboto({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
   display: "swap",
 });
+
+declare module "@mui/material/styles" {
+  interface Theme {
+    custom: {
+      greyBg: string;
+    };
+  }
+  // allow configuration using `createTheme`
+  interface ThemeOptions {
+    custom?: {
+      greyBg?: string;
+    };
+  }
+}
 
 export const generateTheme = (primary?: string) => {
   try {
@@ -44,6 +62,9 @@ export const generateTheme = (primary?: string) => {
           }),
         },
       },
+    },
+    custom: {
+      greyBg: "#f2f3f5",
     },
   });
 };

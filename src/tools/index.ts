@@ -1,4 +1,5 @@
 import { MatSelectOptionFactory } from "../components/common/material/MatSelect";
+import moment from "moment";
 
 export const getLocalStorageItem = (key: string): string => {
   try {
@@ -40,4 +41,15 @@ export function labelMapToSelectOptions<
     options.push(new MatSelectOptionFactory(key, label))
   );
   return options;
+}
+
+export function timeFormat(
+  date: string | Date | number,
+  formatter = "YYYY-MM-DD HH:mm:ss"
+) {
+  try {
+    return moment(date).format(formatter);
+  } catch (error) {
+    return date;
+  }
 }

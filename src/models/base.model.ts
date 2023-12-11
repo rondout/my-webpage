@@ -12,6 +12,12 @@ export interface BaseData<T extends Id = string> extends BaseObject {
   [key: string]: any;
 }
 
+export interface BaseTimeData<T extends Id = string> extends BaseData<T> {
+  createdAt?: string;
+  updateAt?: string;
+  [key: string]: any;
+}
+
 export interface MatFormItemProps<T = string, E = any> {
   value: T;
   name?: string;
