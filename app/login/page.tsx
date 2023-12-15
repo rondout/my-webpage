@@ -43,7 +43,7 @@ export default function Login() {
           setLoginLoading(false);
           // 这里只能使用replace   不能用push  因为肯呢个profile页面在服务端是有缓存的
           router.replace("/");
-        }, 500);
+        }, 1000);
         // window.location.href = window.location.origin;
       } catch (error) {
         setLoginLoading(false);

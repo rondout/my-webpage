@@ -25,7 +25,9 @@ function RootLayout({ children }: { children: React.ReactNode }) {
       <body className={inter.className}>
         <ReduxProvider>
           <ThemeRegistry color={color}>
-            <Box sx={{ bgcolor: "#f2f3f5", height: 1 }}>
+            <Box
+              sx={{ bgcolor: "#f2f3f5", height: 1, pb: 2, overflow: "auto" }}
+            >
               <HeaderBar />
               {children}
             </Box>

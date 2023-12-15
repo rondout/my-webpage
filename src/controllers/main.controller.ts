@@ -8,6 +8,9 @@ class MainController extends HttpController {
   public login(data: LoginForm) {
     return super.post<{ token: string }>("/api/auth/login", data);
   }
+  public logout() {
+    return super.get<boolean>("/api/auth/logout");
+  }
   public getUserInfo(token?: string) {
     return super.get<BaseUserInfo>("/api/auth/current", null, { token });
   }

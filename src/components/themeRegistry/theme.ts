@@ -41,6 +41,9 @@ export const generateTheme = (primary?: string) => {
     // shadows:{},
     typography: {
       fontFamily: roboto.style.fontFamily,
+      body2: {
+        color: "#0000008c",
+      },
     },
     components: {
       MuiCard: {

@@ -20,6 +20,12 @@ import { useSelector } from "react-redux";
 import { selectUserInfo } from "@/src/store/modules/mainSlice";
 import GetUserInfo from "../users/GetUserInfo";
 import { StyledMenu } from "../common/styled/StyledMenu";
+import mainController from "@/src/controllers/main.controller";
+
+enum MenuEnum {
+  PROFILE,
+  LOGOUT,
+}
 
 export default function HeaderBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -49,9 +55,22 @@ export default function HeaderBar() {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClick = (path: string) => {
+  const handleMenuClick = async (type: MenuEnum) => {
     // console.log(e);
-    router.push(path);
+    switch (type) {
+      case MenuEnum.PROFILE:
+        router.push("/profile");
+        break;
+      case MenuEnum.LOGOUT:
+        try {
+          const result = await mainController.logout();
+          result && router.push("/login");
+        } catch (error) {}
+        break;
+
+      default:
+        break;
+    }
     handleMenuClose();
   };
 
@@ -72,8 +91,12 @@ export default function HeaderBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={() => handleMenuClick("/profile")}>我的</MenuItem>
-      <MenuItem onClick={() => handleMenuClick("/login")}>退出登录</MenuItem>
+      <MenuItem onClick={() => handleMenuClick(MenuEnum.PROFILE)}>
+        我的
+      </MenuItem>
+      <MenuItem onClick={() => handleMenuClick(MenuEnum.LOGOUT)}>
+        退出登录
+      </MenuItem>
     </StyledMenu>
   );
 
@@ -134,11 +157,11 @@ export default function HeaderBar() {
   }
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, height: 64 }}>
       <GetUserInfo />
-      <AppBar position="static">
+      <AppBar position="fixed">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -146,14 +169,14 @@ export default function HeaderBar() {
             sx={{ mr: 2 }}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography
             variant="h6"
             noWrap
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Tribiani Blogs
           </Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
@@ -186,7 +209,7 @@ export default function HeaderBar() {
               >
                 <AccountCircle />
               </IconButton>
-              <Typography variant="body2" sx={{ ml: 0.5 }}>
+              <Typography variant="body2" color="#fff" sx={{ ml: 0.5 }}>
                 {userInfo.username}
               </Typography>
             </Box>
