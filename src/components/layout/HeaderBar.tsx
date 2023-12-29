@@ -21,6 +21,7 @@ import { selectUserInfo } from "@/src/store/modules/mainSlice";
 import GetUserInfo from "../users/GetUserInfo";
 import { StyledMenu } from "../common/styled/StyledMenu";
 import mainController from "@/src/controllers/main.controller";
+import Link from "next/link";
 
 enum MenuEnum {
   PROFILE,
@@ -170,14 +171,16 @@ export default function HeaderBar() {
           >
             <MenuIcon />
           </IconButton> */}
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            Tribiani Blogs
-          </Typography>
+          <Link href="/">
+            <Typography
+              variant="h6"
+              noWrap
+              component="div"
+              sx={{ display: { xs: "none", sm: "block" } }}
+            >
+              Tribiani Blogs
+            </Typography>
+          </Link>
           <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton

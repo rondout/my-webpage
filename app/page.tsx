@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <Box>
+    <Box className="content-item">
       <h1>this is page.tsx</h1>
       <CounterControl />
       <Link href="/users">Users</Link>

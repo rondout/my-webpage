@@ -41,7 +41,7 @@ export default function Login() {
         setLocalStorageItem(STORAGE_TOKEN_KEY, data.token);
         setTimeout(() => {
           setLoginLoading(false);
-          // 这里只能使用replace   不能用push  因为肯呢个profile页面在服务端是有缓存的
+          // 这里只能使用replace   不能用push  因为profile页面在服务端是有缓存的
           router.replace("/");
         }, 1000);
         // window.location.href = window.location.origin;
