@@ -1,6 +1,10 @@
 "use client";
 import mainController from "@/src/controllers/main.controller";
-import { PageLink, TableDataResponse } from "@/src/models/response.model";
+import {
+  MAX_SAFE_PAGE_SIZE,
+  PageLink,
+  TableDataResponse,
+} from "@/src/models/response.model";
 import { BaseUserInfo } from "@/src/models/user.model";
 import { UserActionInfo } from "@/src/models/userAction.model";
 import { Box, Skeleton, Stack, Typography } from "@mui/material";
@@ -13,7 +17,8 @@ interface Props {
   userInfo: BaseUserInfo;
 }
 
-const pageSize = 10;
+// const pageSize = 10;
+const pageSize = MAX_SAFE_PAGE_SIZE;
 
 export default function UserActions(props: Props) {
   const [pageLink, setPageLink] = useState(new PageLink(1, pageSize));
